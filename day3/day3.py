@@ -17,6 +17,10 @@ with open('day3/day3_input.txt', 'r') as fin:
     
 # print(total_count)
 
-elf_groups = np.array_split(rucksacks, 3)
+elf_groups = [rucksacks[i:i+3] for i in range(0, len(rucksacks), 3)]
 
-print(1)
+total_points = 0
+for elf in elf_groups:
+    total_points += alphabet_map[(set(elf[0].strip()) & set(elf[1].strip()) & set(elf[2].strip())).pop()]
+    
+print(total_points)
